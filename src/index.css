@@ -1,0 +1,108 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Amiri', Georgia, serif;
+  --font-sans: 'Cairo', system-ui, sans-serif;
+
+  --color-cream: #faf8f5;
+  --color-cream-dark: #f3efe8;
+  --color-blush: #e8d5d0;
+  --color-blush-deep: #c9a89e;
+  --color-rose: #b87d6f;
+  --color-rose-dark: #9a6356;
+  --color-sage: #8a9a82;
+  --color-sage-light: #c5d4bc;
+  --color-charcoal: #2c2825;
+  --color-charcoal-soft: #5c5650;
+  --color-gold: #c4a574;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream font-sans text-charcoal antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+
+  summary {
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+
+  .animate-slide-in-start {
+    animation: slideInStart 0.35s ease-out forwards;
+  }
+
+  .drawer-panel {
+    @apply fixed top-0 z-50 flex h-full w-[min(100%,320px)] flex-col bg-white p-6 shadow-2xl;
+    inset-inline-end: 0;
+  }
+
+  .drawer-panel-start {
+    @apply fixed top-0 z-50 flex h-full w-[min(100%,320px)] flex-col bg-white p-6 shadow-2xl;
+    inset-inline-start: 0;
+  }
+
+  .icon-btn {
+    @apply relative inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cream-dark/40 text-charcoal transition-all duration-300 hover:bg-cream-dark active:scale-95 sm:h-11 sm:w-11 sm:bg-transparent sm:hover:bg-cream-dark;
+  }
+
+  .icon-badge {
+    @apply absolute -top-1 -end-1 z-10 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-rose px-1 text-[10px] font-medium leading-none text-cream ring-2 ring-white;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInStart {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
